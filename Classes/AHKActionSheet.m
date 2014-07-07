@@ -11,7 +11,7 @@
 #import "AHKActionSheetViewController.h"
 #import "UIImage+AHKAdditions.h"
 #import "UIWindow+AHKAdditions.h"
-#import "AHKACtionSheetBaseCustomCell.h"
+#import "AHKActionSheetBaseCustomCell.h"
 
 static const NSTimeInterval kDefaultAnimationDuration = 0.5f;
 // Length of the range at which the blurred background is being hidden when the user scrolls the tableView to the top.
