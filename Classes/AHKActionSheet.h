@@ -10,7 +10,8 @@
 
 typedef NS_ENUM(NSInteger, AHKActionSheetButtonType) {
     AHKActionSheetButtonTypeDefault = 0,
-    AHKActionSheetButtonTypeDestructive
+    AHKActionSheetButtonTypeDestructive,
+    AHKActionSheetButtonTypeCustom
 };
 
 @class AHKActionSheet;
@@ -93,10 +94,18 @@ typedef void(^AHKActionSheetHandler)(AHKActionSheet *actionSheet);
  */
 - (void)addButtonWithTitle:(NSString *)title image:(UIImage *)image type:(AHKActionSheetButtonType)type handler:(AHKActionSheetHandler)handler;
 
+
 /// Displays the action sheet.
 - (void)show;
 
 /// Dismisses the action sheet with an optional animation.
 - (void)dismissAnimated:(BOOL)animated;
+
+
+
+// @aru: ADDITIONAL
+@property (strong, nonatomic) AHKActionSheetHandler cancelHandlerOnlyButtonCancel; // To separate between flicked down or button press
+- (void)addCustomButtonWithClassName:(NSString *)className cellIdentifier:(NSString *)cellIdentifier data:(id)data interceptingHandler:(AHKActionSheetHandler)interceptingHandler handler:(AHKActionSheetHandler)handler;
+
 
 @end
