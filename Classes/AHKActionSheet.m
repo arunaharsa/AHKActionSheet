@@ -278,12 +278,10 @@ static const CGFloat kCancelButtonShadowHeightRatio = 0.333f;
                                              CGRectGetMaxY(self.bounds) - self.cancelButtonHeight,
                                              CGRectGetWidth(self.bounds),
                                              self.cancelButtonHeight);
-
         self.tableView.contentInset = UIEdgeInsetsMake([self calcTopInset], 0, 0, 0);
     };
 
     if ([UIView respondsToSelector:@selector(animateKeyframesWithDuration:delay:options:animations:completion:)]){
-        NSLog(@"with delay");
         // Animate sliding in tableView and cancel button with keyframe animation for a nicer effect.
         [UIView animateKeyframesWithDuration:self.animationDuration delay:0 options:0 animations:^{
             immediateAnimations();
@@ -294,7 +292,6 @@ static const CGFloat kCancelButtonShadowHeightRatio = 0.333f;
         } completion:nil];
 
     } else {
-        NSLog(@"without delay");
         [UIView animateWithDuration:self.animationDuration animations:^{
             immediateAnimations();
             delayedAnimations();
@@ -365,6 +362,8 @@ static const CGFloat kCancelButtonShadowHeightRatio = 0.333f;
     } else {
         tearDownView();
     }
+    
+    
 }
 
 - (void)setUpNewWindow
@@ -429,6 +428,12 @@ static const CGFloat kCancelButtonShadowHeightRatio = 0.333f;
         [self.cancelButton addSubview:view];
         self.cancelButtonShadowView = view;
     }
+    
+    NSLog(@"%@", self.cancelButtonBackgroundColor);
+//    if (self.cancelButtonBackgroundColor){
+        self.cancelButton.backgroundColor = self.cancelButtonBackgroundColor;
+//    }
+
 }
 
 - (void)setUpTableView
